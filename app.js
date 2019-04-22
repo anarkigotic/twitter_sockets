@@ -8,6 +8,7 @@ var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
 var analyticaldata = require('./routes/analyticalData');
+var userRoute = require('./routes/userRoute');
 var controller = require('./controllers/analyticalDataController');
 
 
@@ -27,6 +28,7 @@ app.use(bodyParser.json({ limit: '50mb', extended: true, parameterLimit: 100000 
 
 
 app.use('/twitter', analyticaldata);
+app.use('/user', userRoute);
 
 app.get("/prueba", (req, res) => {
   res.json("prueba")
@@ -35,7 +37,7 @@ app.get("/prueba", (req, res) => {
 
 
 
-io.on('connection',controller.evaluateData);
+io.on('connection', controller.evaluateData);
 
 
 

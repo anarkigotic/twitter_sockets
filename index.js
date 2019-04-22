@@ -7,7 +7,8 @@ const configdatabase = require('./configuration/database');
 
 mongoose.connect(`mongodb://${configdatabase.databaseTwitter.serverdb}:${configdatabase.databaseTwitterportdb}/${configdatabase.databaseTwitter.database}`,
     {
-        useNewUrlParser: true
+        useNewUrlParser: true,
+        useCreateIndex:true
     })
     .then((doc) => {
         // app.listen(app.get('port'), () => {
